@@ -1,5 +1,10 @@
 package com.beginnerprogrammers.bryan.retrofitdemo.data;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -221,6 +226,19 @@ public class Repo {
         this.open_issues = open_issues;
         this.watchers = watchers;
         this.default_branch = default_branch;
+    }
+
+    public Repo(JSONObject jsonObject) {
+
+        this.id = jsonObject.optInt("id");
+        this.name = jsonObject.optString("name");
+        this.full_name = jsonObject.optString("full_name");
+        Log.d("flow2", "doing shit");
+        try {
+            this.owner = new Owner(new JSONObject(jsonObject.get("owner").toString()));
+        } catch(JSONException e) {
+            Log.d("flow", e.getMessage());
+        }
     }
 
     /**
@@ -1776,6 +1794,18 @@ public class Repo {
         this.additionalProperties.put(name, value);
         return this;
     }
+
+//    public static Repo parseJsonResponse(String response) {
+//
+//        try{
+//            JSONObject jsonObject = new JSONObject(response);
+//
+//
+//        } catch(JSONException e) {
+//            Log.d("flow", e.getMessage());
+//        }
+//
+//    }
 
 }
 

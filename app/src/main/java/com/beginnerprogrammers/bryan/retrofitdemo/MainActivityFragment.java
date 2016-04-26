@@ -17,6 +17,10 @@ import com.beginnerprogrammers.bryan.retrofitdemo.retrofit.GitHubService;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -57,10 +61,10 @@ public class MainActivityFragment extends Fragment {
         @Override
         public void onClick(View v) {
             //Using Retrofit Library
-            //useRetrofit();
+            useRetrofit();
 
             //Using HTTP Android connection
-            useHttp("https://api.github.com/users/bryanwho/repos");
+//            useHttp("https://api.github.com/users/bryanwho/repos");
         }
     };
 
@@ -125,13 +129,42 @@ public class MainActivityFragment extends Fragment {
             try {
                 return downloadUrl(urls[0]);
             } catch (IOException e) {
+                Log.d("flow", "Unable to retrieve web page. URL may be invalid");
                 return "Unable to retrieve web page. URL may be invalid.";
             }
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            Log.d("flow", "response: " + result);
+            Log.d("flow1", "response: " + result);
+
+            prepareResponse(result);
+        }
+    }
+
+    public void prepareResponse(String result) {
+        JSONArray jsonArray = null;
+        Repo repo = null;
+
+        Log.d("flow3", "doing shit 3");
+
+        try{
+            jsonArray = new JSONArray(result);
+            repo = new Repo(jsonArray.getJSONObject(0));
+        } catch (JSONException e) {
+            Log.d("flow","CATCH ERROR prepareResponse " + e.getMessage());
+        }
+
+        if(jsonArray != null) {
+            Log.d("flow", "JSON ARRAY:  " + jsonArray.toString());
+        } else {
+            Log.d("flow", "JSON ARRAY IS NULL");
+        }
+
+        if(repo != null) {
+            Log.d("flow", "repository id: " + repo.getId());
+        } else {
+            Log.d("flow", "repository is null");
         }
     }
 
@@ -175,5 +208,29 @@ public class MainActivityFragment extends Fragment {
         reader.read(buffer);
         return new String(buffer);
     }
+
+    public void useVolley() {
+//        // Instantiate the RequestQueue.
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//        String url ="http://www.google.com";
+//
+//// Request a string response from the provided URL.
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        // Display the first 500 characters of the response string.
+//                        mTextView.setText("Response is: "+ response.substring(0,500));
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                mTextView.setText("That didn't work!");
+//            }
+//        });
+//// Add the request to the RequestQueue.
+//        queue.add(stringRequest);
+    }
+
 
 }

@@ -1,5 +1,7 @@
 package com.beginnerprogrammers.bryan.retrofitdemo.data;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -71,6 +73,16 @@ public class Owner {
         this.received_events_url = received_events_url;
         this.type = type;
         this.site_admin = site_admin;
+    }
+
+    public Owner(JSONObject jsonObject) {
+        this.login = jsonObject.optString("login");
+        this.id = jsonObject.optInt("id");
+        this.avatar_url = jsonObject.optString("login");
+        this.gravatar_id = jsonObject.optString("gravatar_id");
+        this.url = jsonObject.optString("url");
+        this.html_url = jsonObject.optString("html_url");
+
     }
 
     /**
