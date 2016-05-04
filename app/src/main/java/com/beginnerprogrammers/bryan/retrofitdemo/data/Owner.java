@@ -75,15 +75,15 @@ public class Owner {
         this.site_admin = site_admin;
     }
 
-    public Owner(JSONObject jsonObject) {
-        this.login = jsonObject.optString("login");
-        this.id = jsonObject.optInt("id");
-        this.avatar_url = jsonObject.optString("login");
-        this.gravatar_id = jsonObject.optString("gravatar_id");
-        this.url = jsonObject.optString("url");
-        this.html_url = jsonObject.optString("html_url");
-
-    }
+//    public Owner(JSONObject jsonObject) {
+//        this.login = jsonObject.optString("login");
+//        this.id = jsonObject.optInt("id");
+//        this.avatar_url = jsonObject.optString("login");
+//        this.gravatar_id = jsonObject.optString("gravatar_id");
+//        this.url = jsonObject.optString("url");
+//        this.html_url = jsonObject.optString("html_url");
+//
+//    }
 
     /**
      *

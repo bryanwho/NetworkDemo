@@ -31,7 +31,6 @@ dependencies {
 
     //Used for logging responses of Retrofits HttpClient
     compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
 
     //Used for generated Annotations
     compile 'org.glassfish.main:javax.annotation:4.0-b33'

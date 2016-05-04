@@ -228,18 +228,18 @@ public class Repo {
         this.default_branch = default_branch;
     }
 
-    public Repo(JSONObject jsonObject) {
-
-        this.id = jsonObject.optInt("id");
-        this.name = jsonObject.optString("name");
-        this.full_name = jsonObject.optString("full_name");
-        Log.d("flow2", "doing shit");
-        try {
-            this.owner = new Owner(new JSONObject(jsonObject.get("owner").toString()));
-        } catch(JSONException e) {
-            Log.d("flow", e.getMessage());
-        }
-    }
+//    public Repo(JSONObject jsonObject) {
+//
+//        this.id = jsonObject.optInt("id");
+//        this.name = jsonObject.optString("name");
+//        this.full_name = jsonObject.optString("full_name");
+//        Log.d("flow2", "doing shit");
+//        try {
+//            this.owner = new Owner(new JSONObject(jsonObject.get("owner").toString()));
+//        } catch(JSONException e) {
+//            Log.d("flow", e.getMessage());
+//        }
+//    }
 
     /**
      *

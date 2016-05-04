@@ -52,6 +52,7 @@ public class MainActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         button = (Button) view.findViewById(R.id.textView);
+
         button.setOnClickListener(onbuttonClickedListener);
 
         return view;
@@ -137,36 +138,34 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             Log.d("flow1", "response: " + result);
-
-            prepareResponse(result);
         }
     }
 
-    public void prepareResponse(String result) {
-        JSONArray jsonArray = null;
-        Repo repo = null;
-
-        Log.d("flow3", "doing shit 3");
-
-        try{
-            jsonArray = new JSONArray(result);
-            repo = new Repo(jsonArray.getJSONObject(0));
-        } catch (JSONException e) {
-            Log.d("flow","CATCH ERROR prepareResponse " + e.getMessage());
-        }
-
-        if(jsonArray != null) {
-            Log.d("flow", "JSON ARRAY:  " + jsonArray.toString());
-        } else {
-            Log.d("flow", "JSON ARRAY IS NULL");
-        }
-
-        if(repo != null) {
-            Log.d("flow", "repository id: " + repo.getId());
-        } else {
-            Log.d("flow", "repository is null");
-        }
-    }
+//    public void prepareResponse(String result) {
+//        JSONArray jsonArray = null;
+//        Repo repo = null;
+//
+//        Log.d("flow3", "doing shit 3");
+//
+//        try{
+//            jsonArray = new JSONArray(result);
+//            repo = new Repo(jsonArray.getJSONObject(0));
+//        } catch (JSONException e) {
+//            Log.d("flow","CATCH ERROR prepareResponse " + e.getMessage());
+//        }
+//
+//        if(jsonArray != null) {
+//            Log.d("flow", "JSON ARRAY:  " + jsonArray.toString());
+//        } else {
+//            Log.d("flow", "JSON ARRAY IS NULL");
+//        }
+//
+//        if(repo != null) {
+//            Log.d("flow", "repository id: " + repo.getId());
+//        } else {
+//            Log.d("flow", "repository is null");
+//        }
+//    }
 
     private String downloadUrl(String myurl) throws IOException {
         InputStream is = null;
